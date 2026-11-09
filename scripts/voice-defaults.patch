@@ -1,0 +1,26 @@
+diff --git a/frontend/src/lib/store.ts b/frontend/src/lib/store.ts
+index dcb1ffc..79679d2 100644
+--- a/frontend/src/lib/store.ts
++++ b/frontend/src/lib/store.ts
+@@ -120,9 +120,9 @@ function loadSettings(): Settings {
+     defaultAgent: '',
+     temperature: 0.7,
+     maxTokens: 4096,
+-    speechEnabled: false,
+-    voiceOutputEnabled: false,
+-    voiceAutoplay: false,
++    speechEnabled: true,
++    voiceOutputEnabled: true,
++    voiceAutoplay: true,
+   };
+   try {
+     const raw = localStorage.getItem(SETTINGS_KEY);
+@@ -296,7 +296,7 @@ export const useAppStore = create<AppState>((set, get) => {
+     optInDisplayName: localStorage.getItem(OPTIN_NAME_KEY) || '',
+     optInEmail: localStorage.getItem(OPTIN_EMAIL_KEY) || '',
+     optInAnonId: localStorage.getItem(OPTIN_ANONID_KEY) || crypto.randomUUID(),
+-    optInModalSeen: localStorage.getItem(OPTIN_SEEN_KEY) === 'true',
++    optInModalSeen: localStorage.getItem(OPTIN_SEEN_KEY) !== 'false',
+     optInModalOpen: false,
+ 
+     // ── Conversations ───────────────────────────────────────────────

@@ -31,6 +31,13 @@ if [ ! -d "$OJ_DIR/.git" ]; then
   log "Cloning OpenJarvis into $OJ_DIR"
   git clone --depth 1 https://github.com/open-jarvis/OpenJarvis.git "$OJ_DIR"
 fi
+# GUI defaults: voice input/output on, skip the analytics/giveaway popup
+PATCH="$(cd "$(dirname "$0")" && pwd)/voice-defaults.patch"
+if [ "${SKIP_VOICE:-0}" != "1" ] && [ -f "$PATCH" ] &&
+   git -C "$OJ_DIR" apply --check "$PATCH" 2>/dev/null; then
+  log "Applying GUI voice defaults"
+  git -C "$OJ_DIR" apply "$PATCH"
+fi
 EXTRAS=(--extra dev --extra server)
 if [ "${SKIP_VOICE:-0}" != "1" ]; then
   EXTRAS+=(--extra desktop --extra voice)

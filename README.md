@@ -27,8 +27,8 @@ Overrides: `OPENJARVIS_DIR`, `OPENJARVIS_MODEL`, `SKIP_RUST=1`, `SKIP_VOICE=1`.
 
 ### Voice assistant
 
-- **Browser GUI** (works from any device that can open the GUI): Settings → Speech → turn on
-  *Speech-to-Text*, *Text-to-Speech* and *Speak replies automatically*. Click the mic next to the
+- **Browser GUI** (works from any device that can open the GUI): voice is on by default (via `scripts/voice-defaults.patch`; toggles are in Settings → Speech:
+  *Speech-to-Text*, *Text-to-Speech*, *Speak replies automatically*). Click the mic next to the
   message box, speak, click it again to stop; the transcript lands in the box, press Enter, and the
   reply is read aloud.
 - **Terminal** (needs a mic and speakers on the machine running Jarvis): `jarvis chat --voice`
